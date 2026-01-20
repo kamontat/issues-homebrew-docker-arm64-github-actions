@@ -14,13 +14,13 @@ ENV BREW_HOME="/home/linuxbrew"
 ENV DEBIAN_FRONTEND=noninteractive NONINTERACTIVE=true
 
 RUN useradd --create-home --uid 5000 --group sudo --shell $SHELL $USER \
-  && echo "%$USER ALL=(ALL) NOPASSWD:ALL" >"/etc/sudoers.d/$USER-group"
+  && echo "%$USER ALL=(ALL) NOPASSWD:ALL" >"/etc/sudoers.d/$USER-group" \
+  && mkdir -p "$BREW_HOME"
 
 USER $USER
 WORKDIR $USER_HOME
 
-RUN mkdir -p "$BREW_HOME" \
-  && bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+RUN bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 RUN /home/linuxbrew/.linuxbrew/bin/brew config || true \
   && /home/linuxbrew/.linuxbrew/bin/brew doctor || true
