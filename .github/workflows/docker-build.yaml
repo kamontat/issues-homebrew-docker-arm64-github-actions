@@ -25,16 +25,7 @@ jobs:
       attestations: write
       artifact-metadata: write
       id-token: write
-    strategy:
-      fail-fast: true
-      matrix:
-        image:
-          - "ubuntu:latest"
-          - "debian:latest"
-        exclude:
-          - image: ${{ !contains(inputs.images, 'ubuntu:latest') && 'ubuntu:latest' }}
-          - image: ${{ !contains(inputs.images, 'debian:latest') && 'debian:latest' }}
-    name: Publish ${{ matrix.image }}
+    name: Publish
     steps:
       - name: Set up QEMU
         uses: docker/setup-qemu-action@c7c53464625b32c7a7e944ae62b3e17d2b600130 # v3.7.0
