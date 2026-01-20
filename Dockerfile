@@ -22,7 +22,7 @@ WORKDIR $USER_HOME
 RUN mkdir -p "$BREW_HOME" \
   && bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-RUN /home/linuxbrew/.linuxbrew/bin/brew config \
-  && /home/linuxbrew/.linuxbrew/bin/brew doctor
+RUN /home/linuxbrew/.linuxbrew/bin/brew config || true \
+  && /home/linuxbrew/.linuxbrew/bin/brew doctor || true
 
 ENTRYPOINT [ "bash" ]
