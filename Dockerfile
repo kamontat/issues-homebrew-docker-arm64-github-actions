@@ -44,7 +44,6 @@ WORKDIR $USER_HOME
 
 RUN bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-RUN "$BREW_HOME/.linuxbrew/bin/brew" install-bundler-gems
 RUN "$BREW_HOME/.linuxbrew/bin/brew" config
 RUN "$BREW_HOME/.linuxbrew/bin/brew" doctor
 RUN "$BREW_HOME/.linuxbrew/bin/brew" cleanup
