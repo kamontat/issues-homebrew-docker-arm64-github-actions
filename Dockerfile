@@ -1,28 +1,22 @@
 FROM ubuntu:latest
 
-RUN apt install -y --no-install-recommends software-properties-common gnupg-agent \
+RUN apt update \
+  && apt install -y --no-install-recommends software-properties-common gnupg-agent \
   && add-apt-repository -y ppa:git-core/ppa \
   && apt update \
   && apt install -y --no-install-recommends \
     acl \
     bzip2 \
-    ca-certificates \
-    curl \
-    file \
-    fonts-dejavu-core \
-    g++ \
-    gawk \
-    git \
-    gpg \
-    less \
-    locales \
+    ca-certificates curl \
+    file fonts-dejavu-core \
+    g++ gawk git gpg \
+    less locales \
     make \
     netbase \
     openssh-client \
     patch \
     sudo \
-    unzip \
-    uuid-runtime \
+    unzip uuid-runtime \
     tzdata \
     jq \
     zsh \
