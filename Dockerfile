@@ -1,11 +1,31 @@
 FROM ubuntu:latest
 
-
-RUN apt update \
-  && apt install -y locales tzdata curl gpg sudo zsh \
-  && apt upgrade -y \
-  && apt install -y git file procps unzip \
-  && apt install -y libz-dev \
+RUN apt install -y --no-install-recommends software-properties-common gnupg-agent \
+  && add-apt-repository -y ppa:git-core/ppa \
+  && apt update \
+  && apt install -y --no-install-recommends \
+    acl \
+    bzip2 \
+    ca-certificates \
+    curl \
+    file \
+    fonts-dejavu-core \
+    g++ \
+    gawk \
+    git \
+    gpg \
+    less \
+    locales \
+    make \
+    netbase \
+    openssh-client \
+    patch \
+    sudo \
+    unzip \
+    uuid-runtime \
+    tzdata \
+    jq \
+    zsh \
   && apt clean \
   && rm -rf /var/lib/apt/lists/*
 
